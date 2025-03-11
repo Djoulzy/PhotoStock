@@ -1,11 +1,17 @@
+name: photostock
 services:
   api:
     image: photostock-api
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     build:
-      context: ./API
+      context: ./photostock-api
       dockerfile: ./Dockerfile
+    volumes:
+      - ./volumes/chunks:/chunks
+      - ./volumes/import:/import
+      - ./volumes/library:/library
+      - ./volumes/db:/db
     ports:
       - 4444:4444
   front:
@@ -13,7 +19,7 @@ services:
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     build:
-      context: ./Front
+      context: ./photostock-front
       dockerfile: ./Dockerfile
     ports:
       - 8888:80
