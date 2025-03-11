@@ -1,0 +1,19 @@
+services:
+  api:
+    image: photostock-api
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    build:
+      context: ./API
+      dockerfile: ./Dockerfile
+    ports:
+      - 4444:4444
+  front:
+    image: photostock-front
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    build:
+      context: ./Front
+      dockerfile: ./Dockerfile
+    ports:
+      - 8888:80
