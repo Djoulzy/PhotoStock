@@ -16,3 +16,5 @@ volumes/library/*
 !volumes/db
 volumes/db/*
 !volumes/db/.gitkeep
+
+.DS_Store
