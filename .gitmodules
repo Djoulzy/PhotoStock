@@ -1,0 +1,6 @@
+[submodule "photostock-front"]
+	path = photostock-front
+	url = git@github.com:Djoulzy/photostock-front.git
+[submodule "photostock-api"]
+	path = photostock-api
+	url = git@github.com:Djoulzy/photostock-api.git
