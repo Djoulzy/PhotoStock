@@ -1,9 +1,15 @@
 name: photostock
+networks:
+  photostock_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.88.0.0/16
 services:
   api:
     image: photostock-api
     stdin_open: true # docker run -i
-    tty: true        # docker run -t
+    tty: true # docker run -t
     build:
       context: ./photostock-api
       dockerfile: ./Dockerfile
@@ -12,14 +18,20 @@ services:
       - ./volumes/import:/import
       - ./volumes/library:/library
       - ./volumes/db:/db
+    networks:
+      photostock_net:
+        ipv4_address: 172.88.0.10
     ports:
       - 4444:4444
   front:
     image: photostock-front
     stdin_open: true # docker run -i
-    tty: true        # docker run -t
+    tty: true # docker run -t
     build:
       context: ./photostock-front
       dockerfile: ./Dockerfile
+    networks:
+      photostock_net:
+        ipv4_address: 172.88.0.11
     ports:
       - 8888:80
