@@ -7,12 +7,12 @@ networks:
         - subnet: 172.88.0.0/16
 services:
   api:
-    image: photostock-api
+    image: ghcr.io/djoulzy/photostock-api:latest
     stdin_open: true # docker run -i
     tty: true # docker run -t
-    build:
-      context: ./photostock-api
-      dockerfile: ./Dockerfile
+    # build:
+    #   context: ./photostock-api
+    #   dockerfile: ./Dockerfile
     volumes:
       - ./volumes/chunks:/chunks
       - ./volumes/import:/import
@@ -24,12 +24,12 @@ services:
     ports:
       - 4444:4444
   front:
-    image: photostock-front
+    image: ghcr.io/djoulzy/photostock-front:latest
     stdin_open: true # docker run -i
     tty: true # docker run -t
-    build:
-      context: ./photostock-front
-      dockerfile: ./Dockerfile
+    # build:
+    #   context: ./photostock-front
+    #   dockerfile: ./Dockerfile
     networks:
       photostock_net:
         ipv4_address: 172.88.0.11
