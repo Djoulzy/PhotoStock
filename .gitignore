@@ -17,6 +17,10 @@ volumes/library/*
 volumes/db/*
 !volumes/db/.gitkeep
 
+!volumes/assets
+volumes/assets/*
+!volumes/assets/.gitkeep
+
 .DS_Store
 photostock-front
 photostock-api
