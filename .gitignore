@@ -18,3 +18,5 @@ volumes/db/*
 !volumes/db/.gitkeep
 
 .DS_Store
+photostock-front
+photostock-api

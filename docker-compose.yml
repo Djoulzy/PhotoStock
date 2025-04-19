@@ -7,7 +7,7 @@ networks:
         - subnet: 172.88.0.0/16
 services:
   api:
-    image: ghcr.io/djoulzy/photostock-api:latest
+    image: ghcr.io/djoulzy/photostock-api:main
     stdin_open: true # docker run -i
     tty: true # docker run -t
     # build:
@@ -24,7 +24,7 @@ services:
     ports:
       - 4444:4444
   front:
-    image: ghcr.io/djoulzy/photostock-front:latest
+    image: ghcr.io/djoulzy/photostock-front:main
     stdin_open: true # docker run -i
     tty: true # docker run -t
     # build:
