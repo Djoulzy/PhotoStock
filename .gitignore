@@ -20,3 +20,5 @@ volumes/db/*
 .DS_Store
 photostock-front
 photostock-api
+
+.env
