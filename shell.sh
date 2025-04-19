@@ -1,0 +1,1 @@
+docker exec -it photostock-api-1 /bin/sh
