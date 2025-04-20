@@ -1,10 +1,10 @@
 name: photostock
-# networks:
-#   photostock_net:
-#     driver: bridge
-#     ipam:
-#       config:
-#         - subnet: 172.88.0.0/16
+networks:
+  ${SUBNET_NAME}:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${SUBNET_PART}.0.0/16
 services:
   api:
     image: ghcr.io/djoulzy/photostock-api:main
@@ -16,17 +16,17 @@ services:
       - ./volumes/library:/library
       - ./volumes/assets:/assets
       - ./volumes/db:/db
-    # networks:
-    #   photostock_net:
-    #     ipv4_address: 172.88.0.10
+    networks:
+      ${SUBNET_NAME}:
+        ipv4_address: ${SUBNET_PART}.0.10
     ports:
       - 4444:4444
   front:
     image: ghcr.io/djoulzy/photostock-front:main
     stdin_open: true # docker run -i
     tty: true # docker run -t
-    # networks:
-    #   photostock_net:
-    #     ipv4_address: 172.88.0.11
+    networks:
+      ${SUBNET_NAME}:
+        ipv4_address: ${SUBNET_PART}.0.11
     ports:
       - ${APP_PORT}:80
