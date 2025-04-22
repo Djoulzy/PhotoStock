@@ -20,7 +20,7 @@ services:
       photostock_net:
         ipv4_address: ${SUBNET_PART}.0.10
     ports:
-      - 4444:4444
+      - ${API_PORT}:${API_PORT}
   front:
     image: ghcr.io/djoulzy/photostock-front:main
     stdin_open: true # docker run -i
@@ -29,6 +29,8 @@ services:
       photostock_net:
         ipv4_address: ${SUBNET_PART}.0.11
     environment:
-      API_PORT: 4444
+      REACT_APP_ENTRYPOINT: http://${SUBNET_PART}.0.10:${API_PORT}/api/v1
+      REACT_APP_THUMB: http://${SUBNET_PART}.0.10:${API_PORT}/api/v1/thumb
+      REACT_APP_IMAGE: http://${SUBNET_PART}.0.10:${API_PORT}
     ports:
-      - ${APP_EXT_PORT}:80
+      - ${APP_PORT}:${APP_PORT}
